@@ -25,8 +25,6 @@ After the application is up, we need to run migration and seed script to create 
 - Otherwise, you could use the normal laravel migration command line: `php artisan migrate:refresh --seed` but just make sure the application is able to connect to your database following the settings in `.env` file.
 
 ## Usage
-Import `conference-condominium-management.postman_collection.json` to your postman.
-You might need to update the `APP_URL` collection variable to your URL localhost.
 
 ## Roadmap
 - [] Authenticate System
