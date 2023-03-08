@@ -46,7 +46,23 @@ class ModuleServiceProvider extends ServiceProvider {
     }
 
     public function register() {
-        //
+        $directories = array_map('basename', File::directories(__DIR__));
+
+        if (!empty($directories)) {
+            foreach ($directories as $directory) {
+                $configPath = __DIR__ . '/' . $directory . '/config';
+
+                if (File::exists($configPath)) {
+                    $configFiles = array_map('basename', File::allFiles($configPath));
+
+                    if (!empty($configFiles)) {
+                        foreach ($configFiles as $configFile) {
+                            $this->mergeConfigFrom($configPath . '/' . $configFile, basename($configFile, '.php'));
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
