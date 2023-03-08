@@ -1,11 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/LAMPSpace/Conference-Condominium-Management/actions"><img src="https://github.com/LAMPSpace/Conference-Condominium-Management/actions/workflows/develop.yml/badge.svg" alt="Build Status"></a>
-</p>
-
 ## About Conference Condominium Management System application
-
+[![Develop build](https://github.com/LAMPSpace/Conference-Condominium-Management/actions/workflows/develop.yml/badge.svg?branch=develop)](https://github.com/LAMPSpace/Conference-Condominium-Management/actions/workflows/develop.yml)
 ## Getting Started
 
 - Clone the repository
