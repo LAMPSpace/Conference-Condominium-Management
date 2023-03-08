@@ -27,17 +27,17 @@ After the application is up, we need to run migration and seed script to create 
 ## Usage
 
 ## Roadmap
-- [] Authenticate System
-- [] Authorization System
-- [] User Management
-- [] Condominium Management
-- [] Event Management
-- [] Event Registration
-- [] Event Attendance
-- [] Event Report
-- [] Event Feedback
-- [] Event Survey
-- [] ...
+- [ ] Authenticate System
+- [ ] Authorization System
+- [ ] User Management
+- [ ] Condominium Management
+- [ ] Event Management
+- [ ] Event Registration
+- [ ] Event Attendance
+- [ ] Event Report
+- [ ] Event Feedback
+- [ ] Event Survey
+- [ ] ...
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
