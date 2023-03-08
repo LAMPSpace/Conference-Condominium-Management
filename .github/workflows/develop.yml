@@ -38,6 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Create database
+      run: |
+        mkdir -p database
+        touch database/db.sqlite
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v20
       with:
