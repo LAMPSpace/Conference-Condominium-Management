@@ -33,3 +33,21 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+  deploy-vercel:
+    needs: laravel-tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        build-command: |
+          composer install --no-dev
+          php artisan config:clear
+          php artisan route:cache
+          php artisan view:cache
+          php artisan --env=production migrate
+        output-directory: ./public
