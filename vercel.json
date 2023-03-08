@@ -19,7 +19,7 @@
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "APP_URL": "https://ccm.svute.com",
-
+        "APP_KEY": "base64:T+qn0nGewHAGdUCp3QcEfhZlMaTzpsvFGILew0+fEuM=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
