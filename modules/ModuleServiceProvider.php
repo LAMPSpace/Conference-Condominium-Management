@@ -4,6 +4,7 @@ namespace Modules;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\src\Http\Middlewares\DemoMiddleware;
 
 class ModuleServiceProvider extends ServiceProvider {
 
@@ -17,6 +18,20 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
+    
+    public function register() {
+        $directories = array_map('basename', File::directories(__DIR__));
+        $middlewares = [
+            'demo' => DemoMiddleware::class,
+        ];
+        
+        // Register config
+        $this->registerConfigs($directories);
+        
+        // Register middleware
+        $this->registerMiddlewares($middlewares);
+    }
+    
     public function loadModule($moduleName) {
         $modulePath = __DIR__ . '/' . $moduleName;
 
@@ -45,9 +60,7 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
-    public function register() {
-        $directories = array_map('basename', File::directories(__DIR__));
-
+    public function registerConfigs($directories) {
         if (!empty($directories)) {
             foreach ($directories as $directory) {
                 $configPath = __DIR__ . '/' . $directory . '/config';
@@ -65,4 +78,11 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
+    public function registerMiddlewares($middlewares) {
+        if (!empty($middlewares)) {
+            foreach ($middlewares as $key => $middleware) {
+                $this->app['router']->pushMiddlewareToGroup($key, $middleware);
+            }
+        }
+    }
 }
