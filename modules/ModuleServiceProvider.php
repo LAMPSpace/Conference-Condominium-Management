@@ -4,6 +4,8 @@ namespace Modules;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\src\Repositories\UserRepository;
+use Modules\Dashboard\src\Repositories\DashboardRepository;
 
 class ModuleServiceProvider extends ServiceProvider {
 
@@ -30,6 +32,10 @@ class ModuleServiceProvider extends ServiceProvider {
         $this->registerConfigs($modules);
         $this->registerMiddlewares($this->middlewares);
         $this->registerCommands($this->commands);
+        $this->app->singleton(
+            UserRepository::class,
+            DashboardRepository::class
+        );
     }
 
     private function getModules() {
