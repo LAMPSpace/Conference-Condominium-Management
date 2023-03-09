@@ -7,37 +7,36 @@ use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider {
 
+    private $middlewares = [
+        // 'demo' => DemoMiddleware::class,
+    ];
+
+    private $commands = [
+        // DemoCommand::class,
+    ];
+
     public function boot() {
-        $directories = array_map('basename', File::directories(__DIR__));
-        
-        if (!empty($directories)) {
-            foreach ($directories as $directory) {
-                $this->loadModule($directory);
+        $modules = $this->getModules();
+
+        if (!empty($modules)) {
+            foreach ($modules as $module) {
+                $this->registerModule($module);
             }
         }
     }
-
     
     public function register() {
-        $directories = array_map('basename', File::directories(__DIR__));
-        $middlewares = [
-            // 'demo' => DemoMiddleware::class,
-        ];
-        $commands = [
-            // DemoCommand::class,
-        ];
-        
-        // Register config
-        $this->registerConfigs($directories);
-        
-        // Register middleware
-        $this->registerMiddlewares($middlewares);
+        $modules = $this->getModules();
+        $this->registerConfigs($modules);
+        $this->registerMiddlewares($this->middlewares);
+        $this->registerCommands($this->commands);
+    }
 
-        // Register commands
-        $this->registerCommands($commands);
+    private function getModules() {
+        return array_map('basename', File::directories(__DIR__));
     }
     
-    public function loadModule($moduleName) {
+    private function registerModule($moduleName) {
         $modulePath = __DIR__ . '/' . $moduleName;
 
         // Load routes
@@ -65,14 +64,12 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
-    public function registerConfigs($directories) {
+    private function registerConfigs($directories) {
         if (!empty($directories)) {
             foreach ($directories as $directory) {
                 $configPath = __DIR__ . '/' . $directory . '/config';
-
                 if (File::exists($configPath)) {
                     $configFiles = array_map('basename', File::allFiles($configPath));
-
                     if (!empty($configFiles)) {
                         foreach ($configFiles as $configFile) {
                             $this->mergeConfigFrom($configPath . '/' . $configFile, basename($configFile, '.php'));
@@ -83,7 +80,7 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
-    public function registerMiddlewares($middlewares) {
+    private function registerMiddlewares($middlewares) {
         if (!empty($middlewares)) {
             foreach ($middlewares as $key => $middleware) {
                 $this->app['router']->pushMiddlewareToGroup($key, $middleware);
@@ -91,7 +88,7 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
-    public function registerCommands($commands) {
+    private function registerCommands($commands) {
         if (!empty($commands)) {
             $this->commands($commands);
         }
