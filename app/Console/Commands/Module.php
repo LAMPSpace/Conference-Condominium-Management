@@ -88,13 +88,16 @@ class Module extends Command
             // Create web.php
             $webFile = base_path($modulePath . '/routes/web.php');
             if (!File::exists($webFile)) {
-                File::put($webFile, "<?php\r\n");
+                $stub = file_get_contents(app_path('Console/Commands/Stubs/RouteModule.stub'));
+                $stub = str_replace('{{module_name}}', $name, $stub);
+                $stub = str_replace('{{slug}}', strtolower($name), $stub);
+                File::put($webFile, $stub);
             }
 
             // Create api.php
             $apiFile = base_path($modulePath . '/routes/api.php');
             if (!File::exists($apiFile)) {
-                File::put($apiFile, "<?php\r\n");
+                File::put($apiFile, "<?php\r\nuse Illuminate\Support\Facades\Route;\r\n");
             }
         }
 
@@ -135,6 +138,39 @@ class Module extends Command
             if (!File::exists($commandsFolder)) {
                 File::makeDirectory($commandsFolder, 0755, true, true);
                 File::put($commandsFolder . '/.gitkeep', '');
+            }
+
+            // Repositories
+            $repositoriesFolder = base_path($modulePath . '/src/Repositories');
+            if (!File::exists($repositoriesFolder)) {
+                File::makeDirectory($repositoriesFolder, 0755, true, true);
+
+                $moduleRepositoryFile = base_path($modulePath . '/src/Repositories/'. $name . 'Repository.php');
+                if (!File::exists($moduleRepositoryFile)) {
+                    $repoNamespace = 'Modules\\' . $name . '\\src\\Repositories';
+                    // using stub file
+                    $stub = file_get_contents(app_path('Console/Commands/Stubs/CoreRepository.stub'));
+                    $stub = str_replace('{{namespace}}', $repoNamespace, $stub);
+                    $stub = str_replace('{{repository_name}}', $name . 'Repository', $stub);
+                    File::put($moduleRepositoryFile, $stub);
+                }
+            }
+
+            // Services
+            $servicesFolder = base_path($modulePath . '/src/Services');
+            if (!File::exists($servicesFolder)) {
+                File::makeDirectory($servicesFolder, 0755, true, true);
+
+                $moduleServiceFile = base_path($modulePath . '/src/Services/'. $name . 'Service.php');
+                if (!File::exists($moduleServiceFile)) {
+                    $serviceNamespace = 'Modules\\' . $name . '\\src\\Services';
+                    $stub = file_get_contents(app_path('Console/Commands/Stubs/CoreService.stub'));
+                    $stub = str_replace('{{namespace}}', $serviceNamespace, $stub);
+                    $stub = str_replace('{{service_name}}', $name . 'Service', $stub);
+                    $stub = str_replace('{{repository}}', "Modules\\" . $name . "\\src\\Repositories\\" . $name . "Repository", $stub);
+                    $stub = str_replace('{{dependency}}', $name . "Repository", $stub);
+                    File::put($moduleServiceFile, $stub);
+                }
             }
         }
 

@@ -1,0 +1,13 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Repositories\EloquentRepository;
+
+class {{repository_name}} extends EloquentRepository
+{
+    public function __construct()
+    {
+        
+    }
+}

@@ -1,0 +1,9 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::group(['namespace' => 'Modules\{{module_name}}\src\Http\Controllers'], function () {
+    Route::prefix('{{slug}}')->group(function () {
+        // Define router here
+    });
+});
