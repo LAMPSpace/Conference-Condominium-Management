@@ -28,6 +28,11 @@ modules
 
 ## **Usage**
 
+### Create a module
+```bash
+php artisan make:module Demo
+```
+
 ### Migration
 ```bash
 php artisan make:migration create_demo_table --path=modules/Demo/migrations

@@ -40,17 +40,19 @@ class ModuleServiceProvider extends ServiceProvider {
         $modulePath = __DIR__ . '/' . $moduleName;
 
         // Load routes
-        if (File::exists($modulePath . '/routes/routes.php')) {
-            $this->loadRoutesFrom($modulePath . '/routes/routes.php');
+        if (File::exists($modulePath . '/routes')) {
+            foreach (File::allFiles($modulePath . '/routes') as $file) {
+                $this->loadRoutesFrom($file->getPathname());
+            }
         }
         // Load views
         if (File::exists($modulePath . '/resources/views')) {
             $this->loadViewsFrom($modulePath . '/resources/views', $moduleName);
         }
         // Load translations
-        if (File::exists($modulePath . '/resources/languages')) {
-            $this->loadTranslationsFrom($modulePath . '/resources/languages', $moduleName);
-            $this->loadJsonTranslationsFrom($modulePath . '/resources/languages');
+        if (File::exists($modulePath . '/resources/lang')) {
+            $this->loadTranslationsFrom($modulePath . '/resources/lang', $moduleName);
+            $this->loadJsonTranslationsFrom($modulePath . '/resources/lang');
         }
         // Load migrations
         if (File::exists($modulePath . '/migrations')) {
