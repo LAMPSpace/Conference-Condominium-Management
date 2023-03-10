@@ -5,8 +5,14 @@ on:
     branches: [ "develop" ]
 
 jobs:
-  deploy-vercel:
-    needs: laravel-tests
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
