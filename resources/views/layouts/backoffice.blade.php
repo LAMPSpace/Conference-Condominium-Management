@@ -7,13 +7,13 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('backoffice/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backoffice/plugins/fontawesome-free/all.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('backoffice/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backoffice/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('backoffice/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backoffice/plugins/overlayScrollbars/OverlayScrollbars.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -54,10 +54,10 @@
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('backoffice/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backoffice/plugins/bootstrap/bootstrap.min.js') }}"></script>
     <!-- overlayScrollbars -->
-    <script src="{{ asset('backoffice/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('backoffice/plugins/overlayScrollbars/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('backoffice/js/adminlte.js') }}"></script>
+    <script src="{{ asset('backoffice/adminlte.js') }}"></script>
 </body>
 </html>
