@@ -3,13 +3,14 @@
 namespace App\Repositories;
 
 use App\Interfaces\RepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
-    public function __construct(protected Model $model)
+    protected $model;
+
+    public function __construct($model)
     {
-        // 
+        $this->model = $model;
     }
 
     public function all()
@@ -34,6 +35,6 @@ abstract class EloquentRepository implements RepositoryInterface
 
     public function show($id)
     {
-        return $this->model->show($id);
+        return $this->model->find($id);
     }
 }
