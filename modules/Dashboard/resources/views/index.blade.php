@@ -1,1 +1,5 @@
-<h1>DASHBOARD</h1>
+@extends('layouts.backoffice')
+@section('title', 'Dashboard')
+@section('content')
+    
+@endsection
