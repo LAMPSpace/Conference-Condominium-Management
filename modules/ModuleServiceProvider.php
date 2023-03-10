@@ -32,10 +32,10 @@ class ModuleServiceProvider extends ServiceProvider {
         $this->registerConfigs($modules);
         $this->registerMiddlewares($this->middlewares);
         $this->registerCommands($this->commands);
-        $this->app->singleton(
-            UserRepository::class,
-            DashboardRepository::class
-        );
+        // $this->app->singleton(
+        //     UserRepository::class,
+        //     DashboardRepository::class
+        // );
     }
 
     private function getModules() {
