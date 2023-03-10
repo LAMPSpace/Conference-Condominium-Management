@@ -10,8 +10,8 @@
             "dest": "public/backoffice/$1/$2"
         },
         {
-            "src": "/backoffice/plugins/(*)/(.*)",
-            "dest": "public/backoffice/plugins/$1/$2"
+            "src": "/backoffice/plugins/(?<plugin>[^/]+)/(.*)",
+            "dest": "public/backoffice/plugins/$plugin/$2"
         },
         {
             "src": "/(.*)",
