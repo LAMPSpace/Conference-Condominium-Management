@@ -6,8 +6,12 @@
     ],
     "routes": [
         {
-            "src": "/backoffice/(css|js|img|plugins)/(.*)",
+            "src": "/backoffice/(css|js|img)/(.*)",
             "dest": "public/backoffice/$1/$2"
+        },
+        {
+            "src": "/backoffice/plugins/(*)/(.*)",
+            "dest": "public/backoffice/plugins/$1/$2"
         },
         {
             "src": "/(.*)",
