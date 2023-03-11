@@ -11,7 +11,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('backoffice/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backoffice/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/overlayScrollbars/OverlayScrollbars.min.css') }}">
 </head>
@@ -58,6 +58,6 @@
     <!-- overlayScrollbars -->
     <script src="{{ asset('backoffice/plugins/overlayScrollbars/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('backoffice/adminlte.js') }}"></script>
+    <script src="{{ asset('backoffice/js/adminlte.js') }}"></script>
 </body>
 </html>
