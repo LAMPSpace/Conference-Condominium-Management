@@ -10,4 +10,4 @@
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
 
-/public/backoffice linguist-vendored
+/public/backoffice/* linguist-vendored
