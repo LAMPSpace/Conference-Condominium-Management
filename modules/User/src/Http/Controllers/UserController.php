@@ -4,6 +4,7 @@ namespace Modules\User\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\User\src\Services\UserService;
+use Modules\User\src\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
         return view('User::list', compact('pageTitle', 'users'));
     }
 
-    public function create()
+    public function create(CreateUserRequest $request)
     {
         $pageTitle = 'Create User';
         $groups = [

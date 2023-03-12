@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src=https://avatars.githubusercontent.com/u/127288517?s=200&v=4" width="150" alt="LAMPSpace"></a></p>
 
 ## About Conference Condominium Management System application
 [![Develop build](https://github.com/LAMPSpace/Conference-Condominium-Management/actions/workflows/develop.yml/badge.svg?branch=develop)](https://github.com/LAMPSpace/Conference-Condominium-Management/actions/workflows/develop.yml)
@@ -25,6 +25,9 @@ After the application is up, we need to run migration and seed script to create 
 - Otherwise, you could use the normal laravel migration command line: `php artisan migrate:refresh --seed` but just make sure the application is able to connect to your database following the settings in `.env` file.
 
 ## Usage
+
+## Database
+<iframe width="100%" height="315" src='https://dbdiagram.io/embed/640d5968296d97641d873926'> </iframe>
 
 ## Roadmap
 - [ ] Authenticate System
