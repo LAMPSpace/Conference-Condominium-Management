@@ -1,0 +1,37 @@
+<?php
+
+return [
+    "list_table_title" => "User List",
+    "create_title" => "Add a new user",
+    "create_button" => "Create",
+    "create_cancel_button" => "Cancel",
+    "edit_title" => "Edit User",
+    "edit_button" => "Save changes",
+    "delete_button" => "Delete",
+    "delete_confirm" => "Are you sure you want to delete this user?",
+    "table" => [
+        "id" => "No.",
+        "fullname" => "Fullname",
+        "username" => "Username",
+        "email" => "Email address",
+        "group" => "Group permission",
+        "status" => "Status",
+        "created_at" => "Created at",
+        "updated_at" => "Updated at",
+        "actions" => "Actions",
+    ],
+    "create_form" => [
+        "fullname" => "FULLNAME",
+        "username" => "USERNAME",
+        "email" => "E-MAIL ADDRESS",
+        "password" => "PASSWORD",
+        "group_id" => "GROUP PERMISSION",
+        "placeholder_fullname" => "Enter fullname",
+        "placeholder_username" => "Enter username",
+        "placeholder_email" => "Enter email address",
+        "placeholder_password" => "Enter password",
+        "placeholder_group_id" => "Select group permissions",
+    ],
+    "active" => "Active",
+    "inactive" => "Inactive",
+];

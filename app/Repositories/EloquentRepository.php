@@ -25,7 +25,8 @@ abstract class EloquentRepository implements RepositoryInterface
 
     public function update(array $data, $id)
     {
-        return $this->model->update($data, $id);
+        $this->model = $this->show($id);
+        return $this->model->update($data);
     }
 
     public function delete($id)

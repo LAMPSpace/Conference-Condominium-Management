@@ -14,9 +14,9 @@ class UserRepository extends EloquentRepository implements UserRepositoryInterfa
         parent::__construct($model);
     }
 
-    public function getUsers($limit, $search, $order, $dir)
+    public function getUsers()
     {
-        // TODO: Implement getUsers() method.
+        return $this->model->select('*');
     }
 
     public function setPassword($id, $password)

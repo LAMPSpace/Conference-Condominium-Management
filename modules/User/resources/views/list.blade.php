@@ -6,65 +6,34 @@
 @endsection
 @section('content')
 {{-- Button add new user --}}
-<div class="row mb-4">
+<div class="row mb-3">
     <div class="col-12">
-        <a href="{{ route('users.create')}}" class="btn btn-primary"><i class="fa fa-user-plus"></i>  Add new user</a>
+        <a href="{{ route('users.create')}}" class="btn btn-primary"><i class="fa fa-user-plus"></i>  {{ __("User::translates.create_title")}}</a>
     </div>
 </div>
+@if(session()->has('msg'))
+    <x-alert type="success" title="Success" :message="session()->get('msg')" />
+@endif
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
+        <h3 class="card-title">{{ __("User::translates.list_table_title") }}</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="user_table" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Fullname</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Group Permission</th>
-                    <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Action</th>
+                    <th>{{ __("User::translates.table.id") }}</th>
+                    <th>{{ __("User::translates.table.fullname") }}</th>
+                    <th>{{ __("User::translates.table.username") }}</th>
+                    <th>{{ __("User::translates.table.email") }}</th>
+                    <th>{{ __("User::translates.table.group") }}</th>
+                    <th>{{ __("User::translates.table.status") }}</th>
+                    <th>{{ __("User::translates.table.created_at") }}</th>
+                    <th>{{ __("User::translates.table.updated_at") }}</th>
+                    <th>{{ __("User::translates.table.actions") }}</th>
                 </tr>
             </thead>
-            <tbody>
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($users as $user)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $user->fullname }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->group_permission }}</td>
-                    <td>{{ $user->email_verified_at }}</td>
-                    <td>{{ $user->created_at }}</td>
-                    <td>{{ $user->updated_at }}</td>
-                    <td>
-                        <a href="{{ route('users.create', $user->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                        <a href="{{ route('users.create', $user->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                        <a href="{{ route('users.create', $user->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>ID</th>
-                    <th>Fullname</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Group Permission</th>
-                    <th>Status</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
     <!-- /.card-body -->
@@ -87,18 +56,44 @@
     <script src="{{ asset('backoffice/plugins/datatables-buttons/buttons.colVis.min.js') }}"></script>
     <script>
         $(function () {
-            $("#example1").DataTable({
+            $("#user_table").DataTable({
                 "responsive": true, 
-                "lengthChange": false,
+                "processing": true,
                 "autoWidth": false,
+                "serverSide": true,
+                "ajax": "{{ route('users.api.datatables') }}",
                 "language": {
                     "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
                     "zeroRecords": "Không tìm thấy bản ghi nào",
-                    "info": "Showing page _PAGE_ of _PAGES_",
+                    "info": "Đang hiển thị trang _PAGE_ trên _PAGES_",
                     "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                }
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first":      "Đầu",
+                        "last":       "Cuối",
+                        "next":       "Trang sau",
+                        "previous":   "Trang trước"
+                    },
+                },
+                "columns": [
+                    {
+                        "data": "id",
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        },
+                        "searchable": false,
+                    },
+                    { "data": "fullname" },
+                    { "data": "username" },
+                    { "data": "email" },
+                    { "data": "group_id" },
+                    { "data": "email_verified_at" },
+                    { "data": "created_at" },
+                    { "data": "updated_at" },
+                    { "data": "action" },
+                ],
+            });
         });
     </script>
     

@@ -13,14 +13,9 @@ class UserService extends BaseService implements UserServiceInterface
         parent::__construct($repository);
     }
 
-    public function getUsers(array $params)
+    public function getUsers()
     {
-        $limit = $params['limit'] ?? 10;
-        $search = $params['search'] ?? '';
-        $order = $params['order'] ?? 'id';
-        $dir = $params['dir'] ?? 'asc';
-
-        return $this->repository->getUsers($limit, $search, $order, $dir);
+        return $this->repository->getUsers();
     }
 
     public function setPassword($id, $oldPassword, $password)
@@ -29,5 +24,13 @@ class UserService extends BaseService implements UserServiceInterface
             return false;
         }
         return $this->repository->setPassword($id, $password);
+    }
+
+    public function create(array $data)
+    {
+        $passwordWithSalt = createPassword($data['password']);
+        $data['password'] = $passwordWithSalt['password'];
+        $data['salt'] = $passwordWithSalt['salt'];
+        return $this->repository->create($data);
     }
 }
