@@ -27,6 +27,7 @@ jobs:
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
         build-command: |
+          composer update
           composer install --no-dev
           php artisan config:clear
           php artisan route:cache
