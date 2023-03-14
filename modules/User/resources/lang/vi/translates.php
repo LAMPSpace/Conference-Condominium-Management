@@ -1,0 +1,37 @@
+<?php
+
+return [
+    "list_table_title" => "Danh sách người dùng",
+    "create_title" => "Thêm tài khoản mới",
+    "create_button" => "TẠO TÀI KHOẢN",
+    "create_cancel_button" => "HỦY BỎ",
+    "edit_title" => "Chỉnh sửa tài khoản",
+    "edit_button" => "LƯU THAY ĐỔI",
+    "delete_button" => "XÓA",
+    "delete_confirm" => "Bạn có chắc chắn muốn xóa người dùng này?",
+    "table" => [
+        "id" => "STT",
+        "fullname" => "Họ và tên",
+        "username" => "Tên người dùng",
+        "email" => "Địa chỉ email",
+        "group" => "Nhóm phân quyền",
+        "status" => "Trạng thái",
+        "created_at" => "Ngày tạo",
+        "updated_at" => "Ngày cập nhật",
+        "actions" => "Hành động",
+    ],
+    "create_form" => [
+        "fullname" => "HỌ VÀ TÊN",
+        "username" => "TÊN NGƯỜI DÙNG",
+        "email" => "ĐỊA CHỈ EMAIL",
+        "password" => "MẬT KHẨU",
+        "group_id" => "NHÓM PHÂN QUYỀN",
+        "placeholder_fullname" => "Nhập họ và tên",
+        "placeholder_username" => "Nhập tên người dùng",
+        "placeholder_email" => "Nhập địa chỉ email",
+        "placeholder_password" => "Nhập mật khẩu",
+        "placeholder_group_id" => "Chọn nhóm phân quyền",
+    ],
+    "active" => "Đã kích hoạt",
+    "inactive" => "Chưa kích hoạt",
+];

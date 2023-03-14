@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('backoffice/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/overlayScrollbars/OverlayScrollbars.min.css') }}">
+    {{-- Style import --}}
+    @yield('style-imports')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -59,5 +61,8 @@
     <script src="{{ asset('backoffice/plugins/overlayScrollbars/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('backoffice/js/adminlte.js') }}"></script>
+
+    {{-- Script --}}
+    @yield('script-imports')
 </body>
 </html>
